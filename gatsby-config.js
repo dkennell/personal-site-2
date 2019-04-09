@@ -26,24 +26,31 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
-      {
-        resolve: 'gatsby-transformer-remark',
-        options: {
-          plugins: [
-            {
-              resolve: `gatsby-remark-images`,
-              options: {
-                maxWidth: 1000,
-                quality: 80,
-                showCaptions: true,
-                linkImagesToOriginal: false
-              },
-            },
-            'gatsby-remark-prismjs'
-          ]
-        }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/content`,
       },
     },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1000,
+              quality: 80,
+              showCaptions: true,
+              linkImagesToOriginal: false
+            },
+          },
+          'gatsby-remark-prismjs'
+        ]
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline',
